@@ -50,7 +50,7 @@ const SubHeading = (props) => {
 }
 
 const CodeViewer = (props) => {
-    const { code, language, lines = false, lineHighlight = {}, title, id, outerDivId, tryIt = true } = props;
+    const { code, language, lines = false, lineHighlight = {}, title, id, outerDivId, tryIt = true, codeId } = props;
     // let navigate = useNavigate();
 
     const onTryIt = () => {
@@ -84,11 +84,13 @@ const CodeViewer = (props) => {
             <hr />
             <Prism
                 id={id}
+                className="px-4 py-6 border-r-8"
                 style={{ overflow: 'scroll', position: 'absolute', width: '100%' }}
                 language={language}
                 getPrismTheme={(_theme, colorScheme) => github}
                 highlightLines={lineHighlight}
                 scrollAreaComponent='div'
+                noCopy
             >
                 {code}
             </Prism>
