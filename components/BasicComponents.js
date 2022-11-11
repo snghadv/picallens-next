@@ -84,7 +84,6 @@ const CodeViewer = (props) => {
             <hr />
             <Prism
                 id={id}
-                className="px-4 py-6 border-r-8"
                 style={{ overflow: 'scroll', position: 'absolute', width: '100%' }}
                 language={language}
                 getPrismTheme={(_theme, colorScheme) => github}
@@ -92,7 +91,7 @@ const CodeViewer = (props) => {
                 scrollAreaComponent='div'
                 noCopy
             >
-                {code}
+                <div className="px-4 py-6">{code}</div>
             </Prism>
         </div>
     )
