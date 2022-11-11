@@ -84,8 +84,7 @@ const CodeViewer = (props) => {
             <hr />
             <Prism
                 id={id}
-                style={{ overflow: 'scroll', position: 'absolute', width: '100%', display: 'flex' }}
-                withLineNumbers={lines}
+                style={{ overflow: 'scroll', position: 'absolute', width: '100%' }}
                 language={language}
                 getPrismTheme={(_theme, colorScheme) => github}
                 highlightLines={lineHighlight}
