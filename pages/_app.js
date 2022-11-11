@@ -4,17 +4,18 @@ import 'font-awesome/css/font-awesome.min.css';
 import { Analytics } from '@vercel/analytics/react';
 import Head from 'next/head';
 import Script from 'next/script';
+import { MantineProvider } from "@mantine/core";
 
 function MyApp({ Component, pageProps }) {
-  return <>
-    <Head>
-      <link rel="shortcut icon" href="/logo192.svg" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/logo192.svg" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/logo192.svg" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/logo192.svg" />
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-BV97DX5Z73" strategy='afterInteractive'/>
-      <Script>
-        {`
+	return <>
+		<Head>
+			<link rel="shortcut icon" href="/logo192.svg" />
+			<link rel="apple-touch-icon" sizes="180x180" href="/logo192.svg" />
+			<link rel="icon" type="image/png" sizes="32x32" href="/logo192.svg" />
+			<link rel="icon" type="image/png" sizes="16x16" href="/logo192.svg" />
+			<Script async src="https://www.googletagmanager.com/gtag/js?id=G-BV97DX5Z73" strategy='afterInteractive' />
+			<Script>
+				{`
           window.dataLayer = window.dataLayer || [];
           function gtag() {
             dataLayer.push(arguments);
@@ -22,12 +23,21 @@ function MyApp({ Component, pageProps }) {
           gtag('js', new Date());
           gtag('config', 'G-BV97DX5Z73');
         `}
-      </Script>
-    </Head>
-    <Navbar />
-    <Component {...pageProps} />
-    <Analytics />
-  </>
+			</Script>
+		</Head>
+		<Navbar />
+		<MantineProvider
+			withGlobalStyles
+			withNormalizeCSS
+			theme={{
+				/** Put your mantine theme override here */
+				colorScheme: 'light',
+			}}
+		>
+			<Component {...pageProps} />
+		</MantineProvider>
+		<Analytics />
+	</>
 }
 
 export default MyApp
